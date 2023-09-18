@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+import dj_database_url
 from django.contrib import messages
 from pathlib import Path
 
@@ -86,7 +87,8 @@ DATABASES = {
         'PORT': '3306', 
     }
 }
-
+DATABASES['default']= dj_database_url.parse("postgres://cosmeticsdb_user:hlpf9ZK2IyvPYnz6YYeImtltlxoAwCF1@dpg-ck4336nqj8ts739us24g-a.oregon-postgres.render.com/cosmeticsdb")
+# postgres://cosmeticsdb_user:hlpf9ZK2IyvPYnz6YYeImtltlxoAwCF1@dpg-ck4336nqj8ts739us24g-a.oregon-postgres.render.com/cosmeticsdb
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
