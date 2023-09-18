@@ -1,0 +1,270 @@
+{% extends 'panel/base.html' %}
+{% load static %}
+{% block title %}Admin Dashboard{% endblock title %}
+
+
+{% block content %}
+<div class="inner-content">
+    <div class="row cards mr-3 mt-2">
+        <div class="col-md-3 mb-2">
+            <a href="">
+                <div class="card requests shadow">
+                    <div class="row">
+                        <div class="col-3 icon-space">
+                            <i class="fas fa-hand-holding-usd    icon"></i>
+                        </div>
+                        <div class="col-9">
+                            <div class="card-body text-center">
+                                <h2 class="card-title">{{training_request_count}} +</h2>
+                                <p class="card-text">Training Requests</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 mb-2">
+            <a href="">
+                <div class="card programs shadow">
+                    <div class="row">
+                        <div class="col-3 icon-space">
+                            <i class="fas fa-list    icon"></i>
+                        </div>
+                        <div class="col-9">
+                            <div class="card-body text-center">
+                                <h2 class="card-title"> {{programs_count}} +</h2>
+                                <p class="card-text">Training Programs</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 mb-2">
+            <a href="">
+                <div class="card trainers shadow">
+                    <div class="row">
+                        <div class="col-3 icon-space">
+                            <i class="fas fa-user-graduate    icon"></i>
+                        </div>
+                        <div class="col-9">
+                            <div class="card-body text-center">
+                                <h2 class="card-title"> {{trainers_count}} +</h2>
+                                <p class="card-text">Trainers</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 mb-2">
+            <a href="">
+                <div class="card clients shadow">
+                    <div class="row">
+                        <div class="col-3 icon-space">
+                            <i class="fas fa-users    icon"></i>
+                        </div>
+                        <div class="col-9">
+                            <div class="card-body text-center">
+                                <h2 class="card-title"> {{clients_count}} +</h2>
+                                <p class="card-text">Clients </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="line-graph bg-light p-3 rounded shadow">
+                <canvas id="line"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="bar-graph bg-light p-3 rounded shadow">
+                <canvas id="bar"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class=" col-md-8  ">
+            <div class=" card clients_table bg-white shadow p-3" >
+                <table class="table " id="table" style="font-size: 10px;">
+                    <h6><b>Recent training Requests</b></h6>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Company Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Training Program</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="donut-graph bg-white p-3 rounded shadow">
+                <canvas id="donut"></canvas>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Get the canvas element
+    var ctx = document.getElementById('donut').getContext('2d');
+
+    // Data for the chart
+    var data = {
+        labels: ['Pending', 'Approved'],
+        datasets: [{
+            data: [30, 45], // Example data values
+            backgroundColor: ['rgb(5,5,70)', 'green'] // Example colors
+        }]
+    };
+
+    // Chart configuration
+    var config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
+        }
+    };
+
+    // Create the doughnut chart
+    var myChart = new Chart(ctx, config);
+</script>
+
+<script>
+    // Get the canvas element
+    var ctx = document.getElementById('line').getContext('2d');
+
+    // Data for the chart
+    var data = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Trainings per Month',
+            data: [5, 8, 12, 70, 15, 7, 9], // Example data values
+            borderColor: 'blue', // Line color
+            fill: false // Don't fill area under the line
+        }]
+    };
+
+    // Chart configuration
+    var config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            },
+            scales: {
+                x: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    }
+                },
+                y: {
+                    // display: true,
+                    title: {
+                        display: true,
+                        text: 'Trainings'
+                    }
+                }
+            }
+        }
+    };
+
+    // Create the line graph
+    var myChart = new Chart(ctx, config);
+</script>
+<script>
+    // Get the canvas element
+    var ctx = document.getElementById('bar').getContext('2d');
+
+    // Data for the chart
+    var data = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Trainings per Month',
+            data: [5, 8, 12, 70, 15, 7, 9], // Example data values
+            backgroundColor: 'green', // Line color
+            fill: false // Don't fill area under the line
+        }]
+    };
+
+    // Chart configuration
+    var config = {
+        type: 'bar',
+        data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            },
+            scales: {
+                x: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    }
+                },
+                y: {
+                    // display: true,
+                    title: {
+                        display: true,
+                        text: 'Trainings'
+                    }
+                }
+            }
+        }
+    };
+
+    // Create the line graph
+    var myChart = new Chart(ctx, config);
+</script>
+
+
+
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block title %}
+Pharmaceuticals
+{% endblock title %}
+
+{% block main-content %}
+<!-- header -->
+<div class="pharma-header">
+    <div class=" container pharma-header-content" style="padding-top: 100px ;">
+        <h2 class="text-white">Pharmaceuticals</h2>
+        <p class="mt-3"><a href="/">Home > </a> <span> Pharmaceuticals</span></p>
+    </div>
+</div>
+<!-- header -->
+<section class="container mt-4 pb-3">
+    <div class="header d-flex align-items-center justify-content-between">
+        <h4 class="title text-uppercase">Featured Pharmaceutical programs</h4>
+        <!-- <a href="/training_programs" class="btn btn-sm btns">View All <i class="fas fa-arrow-right    "></i></a> -->
+    </div> 
+    <div class="row intro">
+        <div class="col-md-6">
+            <div class="card">
+                <!-- <div class="overlay-b"></div> -->
+                <img src="{% static 'frontend/images/img3.jpg' %}" alt="">
+                <div class="card-body ml-3 mr-3">
+                    <h5 class="text-uppercase">Instrumentation Training Program</h5>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore, at consequuntur! Quasi quisquam officia corrupti minima veniam voluptates ipsa rem!</p>
+                    <div class="card-btn mr-3">
+                        <a class="btn text-white " href="">Read More <i class="fas fa-chevron-right     ml-3"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <!-- <div class="overlay-b"></div> -->
+                <img src="{% static 'frontend/images/img3.jpg' %}" alt="">
+                <div class="card-body ml-3 mr-3">
+                    <h5 class="text-uppercase">Product Design</h5>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore, at consequuntur! Quasi quisquam officia corrupti minima veniam voluptates ipsa rem!</p>
+                    <div class="card-btn mr-3">
+                        <a class="btn text-white " href="">Read More <i class="fas fa-chevron-right     ml-3"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main-content %}

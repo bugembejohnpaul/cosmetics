@@ -1,0 +1,58 @@
+@media (max-width: 900px) {
+    .sidebar
+    {
+        display: none;
+    }
+    .content
+    {
+        width: 100%;
+    }
+
+    .sidebar.active{
+        display: block;
+        width: 100%;
+    }
+
+    .sidebar.active .large{
+        display: block;
+    }
+
+    .sidebar.active .small{
+        display: none;
+    }
+
+    .sidebar .bars{
+        display: block;
+    }
+
+    .sidebar.active .sidebar-links li span{
+        display: inherit;
+    }
+
+    .content.active{
+        display: none;
+    }
+
+    .sidebar.active .icon-close{
+        display: block;
+        margin-top: 10px;
+    }
+
+
+}
+
+@media (min-width:500px) and (max-width: 1000px){
+
+    .cards .card{
+        height: 18vh;
+        width: 110%;
+    }
+    .cards .card .icon{
+        font-size: 2rem;
+        padding: 5px;
+    }
+    .cards .card .card-text{
+        /* display: none; */
+        margin: 0 -20px;
+    }
+}

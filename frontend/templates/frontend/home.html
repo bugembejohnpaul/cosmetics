@@ -1,0 +1,255 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% block title %}Homepage{% endblock title %}
+
+{% block main-content %}
+<!-- caroussel -->
+<div class="intro intro-carousel swiper">
+
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide carousel-item-a intro-item bg-image"
+        style="background-image: url('/static/frontend/images/img2.jpg')">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <h1 class="intro-title mb-4 ">
+                      Find the right <br /> trainer here
+                    </h1>
+                    <h5 class="intro-subtitle">it isn't about skilling, it's all about skilling better</h5>
+                    <div class="buttons d-flex align-items-center">
+                        <p class="intro-price ">
+                            <a href="/about" class="left"><span class="price-a">Know More <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                        </p>
+                        <p class=" intro-price">
+                            <a href="/about" class="right"><span class="price-a">Get a Quote <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                        </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide carousel-item-a intro-item bg-image"
+        style="background-image: url('/static/frontend/images/img4.jpg')">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <h1 class="intro-title mb-4 ">
+                      finding the right <br /> trainer here
+                    </h1>
+                    <h5 class="intro-subtitle">it isn't about skilling, it's all about skilling better</h5>
+                    <div class="buttons d-flex align-items-center">
+                        <p class="intro-price ">
+                            <a href="/about" class="left"><span class="price-a">Know More <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                        </p>
+                        <p class=" intro-price">
+                            <a href="/about" class="right"><span class="price-a">Get a Quote <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                        </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide carousel-item-a intro-item bg-image"
+        style="background-image: url('/static/frontend/images/img5.jpg')">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <h1 class="intro-title mb-4 ">
+                      we have the best cosmetics  <br /> products for you
+                    </h1>
+                    <h5 class="intro-subtitle">Beauty Made Perfect</h5>
+                    <div class="buttons d-flex align-items-center">
+                        <p class="intro-price ">
+                            <a href="/about" class="left"><span class="price-a">Know More <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                        </p>
+                        <p class=" intro-price">
+                            <a href="/about" class="right"><span class="price-a">Get a Quote <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                        </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next text-white"></div>
+    <div class="swiper-button-prev text-white"></div>
+  </div>
+<!-- caroussel -->
+
+<section class="training-programs pt-5 pb-4">
+    <div class="container">
+        <div class="header d-flex align-items-center justify-content-between">
+            <h5 class="title text-uppercase">we ensure sustained behaviour change and skills growth</h4>
+            <a href="/training_programs" class="btn btn-sm btns">See more <i class="fas fa-arrow-right    "></i></a>
+        </div>
+
+        <!-- cards -->
+        <div class="cards-top">
+            <div class="card">
+                <div class="overlay-b"></div>
+                <img src="{% static 'frontend/images/img5.jpg' %}" alt="">
+                <div class="image-text d-flex align-items-center justify-content-between ml-3 mr-3">
+                    <h5 class="text-uppercase">continuous learning approach</h5>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right    "></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="overlay-b"></div>
+                <img src="{% static 'frontend/images/img3.jpg' %}" alt="">
+                <div class="image-text d-flex align-items-center justify-content-between ml-3 mr-3">
+                    <h5 class="text-uppercase">continuous learning approach</h5>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right    "></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="overlay-b"></div>
+                <img src="{% static 'frontend/images/img6.jpg' %}" alt="">
+                <div class="image-text d-flex align-items-center justify-content-between ml-3 mr-3">
+                    <h5 class="text-uppercase">continuous learning approach</h5>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right    "></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- cards -->
+    </div>
+</section>
+
+<!-- our trainings -->
+<section class="trainings">
+    <div class="container">
+        <!-- fetching trainings from the database (display 6)-->
+        <div class="header-top mb-5" style=" width: 30%; color: rgb(5, 5, 70); border-bottom: 3px solid green;">
+          <h4 class="text-center">OUR TRAINING PROGRAMS</h4>
+        </div>
+        <div class="header d-flex align-items-center justify-content-between">
+            <h4 class="title text-uppercase">INSTRUMENTATION TRAINING</h4>
+            <a href="/training_programs" class="btn btn-sm btns">View All <i class="fas fa-arrow-right    "></i></a>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-graduation-cap    " style="font-size: 20px;"></i>
+                </div>
+                <h5 class="card-title">INSTRUMENT VALIDATION</h5>
+                <p class="card-body">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque magnam velit pariatur fugit dolores autem.
+                </p>
+                <a href="" class="card-link">LEARN MORE <i class="fas fa-chevron-right    "></i></a>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-graduation-cap    " style="font-size: 20px;"></i>
+                </div>
+                <h5 class="card-title">INSTRUMENT CALIBRATION</h5>
+                <p class="card-body">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque magnam velit pariatur fugit dolores autem.
+                </p>
+                <a href="" class="card-link">LEARN MORE <i class="fas fa-chevron-right    "></i></a>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-graduation-cap    " style="font-size: 20px;"></i>
+                </div>
+                <h6 class="card-title">INSTRUMENT OPERATION</h6>
+                <p class="card-body">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque magnam velit pariatur fugit dolores autem.
+                </p>
+                <a href="" class="card-link">LEARN MORE <i class="fas fa-chevron-right    "></i></a>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-graduation-cap    " style="font-size: 20px;"></i>
+                </div>
+                <h5 class="card-title">INSTRUMENT DATA ANALYSIS</h5>
+                <p class="card-body">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque magnam velit pariatur fugit dolores autem.
+                </p>
+                <a href="" class="card-link">LEARN MORE <i class="fas fa-chevron-right    "></i></a>
+            </div>
+        </div>
+
+
+        <div class="header d-flex align-items-center justify-content-between mt-4">
+            <h4 class="title text-uppercase">GXP's TRAINING</h4>
+            <a href="/training_programs" class="btn btn-sm btns">View All <i class="fas fa-arrow-right    "></i></a>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-graduation-cap    " style="font-size: 20px;"></i>
+                </div>
+                <h5 class="card-title">GMPs</h5>
+                <p class="card-body">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, odit.
+                </p>
+                <a href="" class="card-link">LEARN MORE <i class="fas fa-chevron-right    "></i></a>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-graduation-cap    " style="font-size: 20px;"></i>
+                </div>
+                <h5 class="card-title">GLPs</h5>
+                <p class="card-body">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, laudantium.
+                </p>
+                <a href="" class="card-link">LEARN MORE <i class="fas fa-chevron-right    "></i></a>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-graduation-cap    " style="font-size: 20px;"></i>
+                </div>
+                <h6 class="card-title">GDPs</h6>
+                <p class="card-body">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, nihil.
+                </p>
+                <a href="" class="card-link">LEARN MORE <i class="fas fa-chevron-right    "></i></a>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-graduation-cap    " style="font-size: 20px;"></i>
+                </div>
+                <h5 class="card-title">GCPs</h5>
+                <p class="card-body">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, velit?
+                </p>
+                <a href="" class="card-link">LEARN MORE <i class="fas fa-chevron-right    "></i></a>
+            </div>
+        </div>
+        <!-- fetching trainings from the database -->
+    </div>
+</section>
+
+{% endblock main-content %}

@@ -1,0 +1,14 @@
+/* Styling Trainer Cards */
+.trainer-card {
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .trainer-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }

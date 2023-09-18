@@ -1,0 +1,30 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% block title %}Trainer{% endblock title %}
+{% block main-content %}
+<div class="container">
+  <h2 class="text-center p-5">Trainer's Details</h2>
+  <link rel="stylesheet" href="/static/frontend/css/trainer.css" />
+  <div class="row shadow-sm bg-light p-4 round mb-5">
+      <div class="col-md-4">
+          <div class="shadow-sm">
+            <img class="trainer" src="/static/frontend/images/img2.jpg" style="height:400px; width:400px; border-radius:10px;">
+            {% comment %} <img src="{{ trainer.profile_image.url }}" alt="{{ trainer.name }}" class="trainer-image"> {% endcomment %}
+            
+          </div>
+      </div>
+      <div class="col-md-8 pl-4">
+          <div class="overflow-auto p-5" style="height:400px;">
+            <h4><i class="fa fa-user" aria-hidden="true"></i> {{ trainer.name }}</h4>
+            <p><i class="fa fa-phone" aria-hidden="true"></i> {{ trainer.phone }}</p>
+            <p><i class="fa fa-envelope" aria-hidden="true"></i> {{ trainer.email }}</p>
+            <p><i class="fa fa-briefcase" aria-hidden="true"></i> {{ trainer.expertise }} years</p>
+            <p><i class="fa fa-info-circle" aria-hidden="true"></i> {{ trainer.description }}</p> 
+            <button class="btn btn-success">Book Now <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main-content %}

@@ -1,0 +1,333 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* navbar section */
+.navbar
+{
+    background-color: #fff;
+}
+.navbar-brand
+{
+    color: rgb(66, 129, 14);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.navbar-nav li
+{
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px;
+    margin-right: 5px;  
+   
+}
+
+.navbar-nav li a{
+    color: rgb(5, 5, 70);
+    text-decoration: none;
+}
+.navbar-nav li a:hover{
+    color: rgb(66, 129, 14);
+}
+
+.navbar .navbar-nav .active 
+{
+    border: 1px solid rgb(112, 228, 18);
+}
+
+.navbar .login
+{
+    background-color: rgb(66, 129, 14);
+    color: #fff;
+}
+
+.navbar .login:hover{
+    background-color: rgb(112, 228, 18);
+}
+
+/*  */
+
+/* navbar section */
+
+/* carousel */
+.intro 
+{
+    margin-top: 59px;
+    /* height: 30vh; */
+    /* background-color: #000; */
+}
+
+.swiper-wrapper .bg-image
+{
+    height: 70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.swiper-wrapper .overlay
+{
+    background-color: rgba(5, 5, 70, 0.692);
+    height: 70vh;
+    /* display: none; */
+}
+
+.swiper-wrapper .intro-content
+{
+    /* position: relative; */
+    /* top: 20; */
+    margin-top: -50vh;
+    color: #fff;
+    
+}
+
+.intro-title
+{
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.5;
+}
+.intro-subtitle{
+    color: #ffffffce;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.intro-price .left
+{
+    background: #fff;
+    padding: 10px 40px;
+    margin-right: 15px;
+    color: rgb(5, 5, 66);
+    font-weight: 600;
+    text-decoration: none;
+}
+.intro-price .left:hover
+{
+    background-color: #ffffff00;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.intro-price .right
+{
+    background: rgb(71, 134, 19);
+    padding: 10px 40px;
+    margin-right: 15px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.intro-price .right:hover
+{
+    background-color: #ffffff00;
+    border: 2px solid rgb(71, 134, 19);
+    color: rgb(71, 134, 19);
+}
+
+.swiper-pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+/* carousel */
+
+/* others */
+.title
+{
+    color: rgb(5, 5, 70);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.header .btn
+{
+    background: rgb(71, 134, 19);
+    color: #fff;
+    padding: 5px 30px;
+}
+
+.cards
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.cards-top
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr  ;
+    padding:40px 0;
+}
+
+.cards-top .card{
+    margin: 15px;
+}
+
+
+.cards .card{
+    margin: 15px;
+    max-height: 300px;
+}
+
+.cards-top .card img{
+    height: 100%;
+}
+
+.image-text
+{
+    background: rgba(5, 5, 70, 0.844);
+    position: absolute;
+    /* bottom: 1; */
+    top: 70%;
+    color: #fff;
+    padding: 5px;
+}
+
+.image-text h5
+{
+    font-size: 18px;
+    width: 80%;
+    margin: 5px 10px;
+}
+
+.image-text .icon{
+    background-color: rgb(71, 134, 19);
+    width: 20%;
+    padding: 2px;
+    padding-left: 20px;
+    font-size: 2rem;
+}
+
+/* others */
+
+/* tainings */
+.trainings{
+    background-color: #f0f0f0;
+    padding: 60px 0;
+}
+
+.trainings .cards .card
+{
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    max-height: 300vh;
+    padding: 20px;
+}
+
+.trainings .cards .card:hover{
+    cursor: pointer;
+    border: 2px solid green;
+    /* display: none; */
+}
+
+.trainings .cards .card .icon
+{
+    background-color: rgba(5, 5, 70, 0.844);
+    width: 70px;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 16px;
+    position: absolute;
+    top: 0px;
+}
+.trainings .cards .card .icon:hover{
+    background-color: rgb(66, 129, 14);
+}
+.trainings .cards .card .card-title
+{
+    margin-top: 65px;
+    margin-bottom: -6px;
+    color: rgba(5, 5, 70, 0.844);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.trainings .cards .card .card-body
+{
+    font-size: 14px;
+    margin-left: -13px;
+}
+
+.trainings .cards .card .card-link
+{
+    color: rgb(66, 138, 7);
+    font-weight: 700;
+}
+.trainings .cards .card .card-link:hover{
+    color: rgb(112, 228, 18);
+}
+
+/* tainings */
+
+.pharma-header
+{
+    height: 40vh;
+    background-color: rgba(5, 5, 70, 0.844);
+}
+
+.pharma-header-content h2{
+    font-size: 2.5rem;
+}
+
+.pharma-header-content p a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.pharma-header-content p span
+{
+    color: rgb(112, 228, 18);
+    border-bottom: 2px solid rgb(112, 228, 18);
+}
+
+.footer
+{
+    background-color: rgba(0, 0, 22, 0.844);
+    padding: 25px 0;
+    color: #fff;
+
+}
+
+
+.footer ul 
+{
+    list-style-type: none;
+}
+
+.footer ul li a{
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.footer ul li a:hover{
+    color: rgb(112, 228, 18);
+}
+
+.card-btn a
+{
+    background-color: rgb(66, 129, 14);
+}
+
+.card-btn a:hover{
+    background-color: rgb(112, 228, 18);
+}
+@media (max-width: 550px) {
+    .cards{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    
+}

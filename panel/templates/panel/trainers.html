@@ -1,0 +1,129 @@
+{% extends 'panel/base.html' %}
+{% load static %}
+{% block title %}Admin Dashboard|Trainers{% endblock title %}
+
+
+{% block content %}
+<div class=" container inner-content">
+  
+    
+    <div class="btns mt-3 d-flex">
+      <h4 class="mr-3">Trainers List</h4>
+      <a href="{% url 'add_trainer' %}" class="btn  btn-sm btn-success">Register Trainer</a>
+    </div>
+    <hr>
+
+    {% if messages %}
+      <ul class="messages">
+          
+          {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong >{{ message }}</strong> 
+              </div>
+          {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="table-section">
+      <table class="table" id="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Trainer Name</th>
+            <th>Profile Image</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Expertise</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for trainer in trainers %}
+            <tr>
+              <td>{{trainer.trainer_id}}</td>
+              <td>{{trainer.trainer_name}}</td>
+              <td>
+                {% if trainer.profile_image %}
+                    <img class="img-thumbnail" src="{{ trainer.profile_image.url }}" width="55" style="height: 55px;">
+                {% endif %}
+              </td>
+              <td>{{trainer.email}}</td>
+              <td>{{trainer.phone_number}}</td>
+              <td>{{trainer.expertise}}</td>
+              <td>
+                <a href="#edit{{trainer.trainer_id}}" data-toggle="modal" class="btn btn-sm text-primary"><i class="fas fa-edit    "></i></a>
+                <a href="#delete{{trainer.trainer_id}}" data-toggle="modal" class="btn btn-sm text-danger"><i class="fas fa-trash    "></i></a>
+              </td>
+            </tr>
+            <!-- edit modal -->
+            <div class="modal fade" id="edit{{trainer.trainer_id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edit Trainer </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="{% url 'edit_trainer' %}" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="trainer_id" value="{{trainer.trainer_id}}">
+                      <div class="form-group">
+                        <label for="trainer_name">Trainer Name</label>
+                        <input type="text" class="form-control" value="{{trainer.trainer_name}}" id="trainer_name" name="trainer_name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Email</label>
+                          <input type="email" class="form-control" id="email" value="{{trainer.email}}" name="email" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="phone_number">Phone Number</label>
+                          <input type="text" class="form-control" id="phone_number" value="{{trainer.phone_number}}" name="phone_number" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="expertise">Expertise</label>
+                          <input type="text" class="form-control" id="expertise" value="{{trainer.expertise}}" name="expertise" required>
+                      </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-sm btn-danger">Save</button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- delete modal -->
+            <div class="modal fade" id="delete{{trainer.trainer_id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title text-white">Delete this trainer</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                      </div>
+                      <div class="modal-body">
+                          <form action="{% url 'delete_trainer' %}" method="post">
+                              {% csrf_token %}
+                              <input type="hidden" name="trainer_id" value="{{trainer.trainer_id}}">
+                              <p>Are you sure you want to delete {{trainer.trainer_id}}?</p>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">No</button>
+                                  <button type="submit" class="btn btn-sm btn-danger">Yes</button>
+                              </div>
+                          </form>
+                      </div>
+                     
+                  </div>
+              </div>
+            </div>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+      
+</div>
+{% endblock content %}

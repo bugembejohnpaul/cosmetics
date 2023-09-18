@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.main
+{
+    display: flex;
+}
+
+.sidebar{
+    width: 15%;
+    height: 100vh;
+    background-color: white;
+}
+
+.sidebar .small{
+    display: none;
+}
+
+.sidebar.active{
+    width: 8%;
+}
+
+.sidebar.active .large
+{
+    display: none;
+}
+.sidebar.active .small
+{
+    display: block;
+}
+
+.sidebar .sidebar-links li a{
+    color: rgb(5, 5, 70);
+}
+
+.sidebar.active .sidebar-links li span
+{
+    display: none;
+}
+.sidebar.active .sidebar-links li a{
+    margin-left: 40px;
+    
+}
+
+.content
+{
+    width: 85%;
+}
+
+.content.active{
+    width: 92%;
+}
+
+
+.sidebar .header
+{
+    background-color: rgb(5, 5, 70);
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.header .logo{
+     
+    /* color: white; */
+    width: 50%;
+    margin: 0 25%;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #fff;
+
+}
+.header .logo .icon
+{
+    color: #fff;
+    font-size: 2rem;
+}
+
+.header:hover{
+    background-color: rgb(66, 129, 14);
+}
+
+.sidebar-links li a{
+    margin-left: 20px;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.sidebar .sidebar-links li a:hover{
+    border-bottom: 2px solid rgb(66, 129, 14);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.content .inner-content
+{
+    padding: 15px;
+    margin-left: 10px;
+}
+
+.sidebar .icon-close
+{
+    display: none; 
+    font-size: 24px; 
+    margin-bottom: -25px;
+}
+
+
+/* dashboard styles */
+.cards a
+{
+    text-decoration: none;
+}
+
+.cards .card{
+    height: 19vh;
+    padding: 10px;
+    border: none;
+    color: rgb(5, 5, 70);
+    padding-top: -10px;
+}
+
+.cards .icon{
+    font-size: 4rem;
+    /* border: 2px solid black; */
+    padding: 10px;
+    border-radius: 50%;
+    color: #fff;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+.cards .card.requests{
+    border-left: 10px solid rgb(66, 129, 14);
+    background-color: rgb(223, 247, 224);
+    
+}
+
+.cards .card.requests .icon{
+    border: 2px solid rgb(66, 129, 14)  ;
+    background-color: rgb(66, 129, 14);
+}  
+
+.cards .card.programs{
+    border-left: 10px solid rgb(5, 5, 70);
+    /* color: rgb(223, 247, 224); */
+    background-color: rgb(196, 196, 238);
+}
+
+.cards .card.programs .icon{
+    border: 2px solid rgb(5, 5, 70)  ;
+    background-color: rgb(5, 5, 70) ;
+} 
+
+.cards .card.trainers{
+    border-left: 10px solid rgb(70, 5, 5);
+    /* color: rgb(223, 247, 224); */
+    background-color: rgb(236, 201, 201);
+}
+
+.cards .card.trainers .icon{
+    border: 2px solid rgb(70, 5, 5)  ;
+    background-color: rgb(70, 5, 5) ;
+} 
+ 
+.cards .card.clients{
+    border-left: 10px solid rgb(233, 186, 33);
+    /* color: rgb(223, 247, 224); */
+    background-color: rgb(247, 234, 191);
+}
+
+.cards .card.clients .icon{
+    border: 2px solid rgb(233, 186, 33)  ;
+    background-color: rgb(233, 186, 33) ;
+}  
+
+.inner-content{
+    height: 90vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.table-section{
+    font-size: 10px;
+}
+
+#table, #table thead th, #table tbody td
+{
+    border: 1px solid rgb(5, 5, 70);
+}
+
+.modal-header{
+    background-color: rgb(5, 5, 70);
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

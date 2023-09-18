@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>D&K Consultants | {% block title %}{% endblock title %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+    <!-- swiper css -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/static/frontend/css/style.css" />
+
+</head>
+  <body>
+    <!-- navigation bar -->
+    
+    <nav class="navbar navbar-expand-lg fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">D&K Consultants</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class="fas fa-bars    "></i></span>
+                
+            </button>
+                
+            <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/whoweare">Who We Are</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown open">
+                          <a href="" class="dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+                              aria-expanded="false">
+                                What we do
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="triggerId">
+                            <a class="dropdown-item" href="/pharmaceutical">Pharmaceuticals</a>
+                            <a class="dropdown-item" href="/cosmetics">Cosmetics</a>
+                          </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/trainings">Training Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/trainers">Our Trainers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="">Contact Us</a>
+                    </li>
+                </ul>
+                
+            </div>
+            <div class="end-section d-flex align-items-center justify-content-center">
+                <!-- client profile -->
+        
+                {% if username == False %}
+                <!-- login/register button -->
+                <div class="login mr-3" style="margin-right: 10px;">
+                    <a href="/register" class="btn text-white " href="login.php">login | register</a>
+                </div>
+                {% else %}
+                <div class="login mr-3" style="margin-right: 10px;">
+                  <form action="{% url  'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <input
+                      class="btn btn-danger text text-capitalize"
+                      type="submit"
+                      value="Logout"
+                    />
+                  </form>
+                </div>
+                {% endif %}
+
+    
+            </div>
+        </div>
+    </nav>
+    <!-- navigation bar -->
+
+
+
+    <!-- content -->
+    {% block main-content %}
+    {% endblock main-content %}
+    <!-- content -->
+
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 align-items-center text-center">
+                    <img src="{% static 'frontend/images/img6.jpg' %}" width="150" alt="">
+                    <h5 class="mt-3">D&K CONSULTANTS</h5>
+                </div> 
+                <div class="col-md-3">
+                    <h5 class="text-uppercase mb-4">Quick Links</h4>
+                    <ul>
+                        <li  class="mb-3"><a href="">Home</a></li>
+                        <li class="mb-3" ><a href="">Who we are</a></li>
+                        <li class="mb-3"><a href="">What we do</a></li>
+                        <li class="mb-3"><a href="">Our trainings</a></li>
+                        <li class="mb-3"><a href="">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-4"> OUR NEWSLETTER</h5>
+                    <form action="" class="form">
+                        <div class="form-group">
+                            <label for="">Name:</label>
+                            <input type="text" name="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email:</label>
+                            <input type="email" name="email" class="form-control">
+                        </div>
+                        <button class="btn btn-sm btn-danger w-50">Subscribe</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-4 text-uppercase">GET IN TOUCH</h5>
+                    <ul>
+                        <li class="mb-3"><i class="fas fa-phone    "></i></li>
+                        <li class="mb-3"><i class="fas fa-location-arrow    "></i></li>
+                        <li class="mb-3"><i class="fas fa-envelope    "></i></li>
+                        
+                        <li class="mb-3"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer -->
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- font awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
+
+    <!-- swiper js -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        var swiper = new Swiper('.intro-carousel', {
+        // Set the desired options for the Swiper carousel
+        // For example, to enable autoplay, set the following:
+        autoplay: {
+            delay: 4000, // Delay between slides in milliseconds
+            disableOnInteraction: false, // Allow user interaction to interrupt autoplay
+        },
+        loop: true, // Enable continuous loop
+        pagination: {
+            el: '.swiper-pagination', // Pagination container
+            clickable: true, // Enable clickable pagination bullets
+        },
+        });
+    </script>
+
+</body>
+</html>

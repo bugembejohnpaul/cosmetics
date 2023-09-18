@@ -1,0 +1,118 @@
+{% extends 'panel/base.html' %}
+{% load static %}
+{% block title %}Admin Dashboard|Categories{% endblock title %}
+
+
+{% block content %}
+<div class="container inner-content">
+
+    <div class="row p-3">
+        
+        <div class="col-md-6 table-section p-3">
+            <table class="table mr-3" id="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Category Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cat in categories %}
+                        <tr>
+                            <td>{{cat.category_id}}</td>
+                            <td>{{cat.category_name}}</td>
+                            <td>
+                                <a href="#edit{{cat.category_id}}" data-toggle="modal" class="btn btn-sm text-primary"><i class="fas fa-edit    "></i></a>
+                                <a href="#delete{{cat.category_id}}" data-toggle="modal" class="btn btn-sm text-danger"><i class="fas fa-trash    "></i></a>
+                            </td>
+                        </tr>
+                        
+                        <!-- delete modal -->
+                        <div class="modal fade" id="delete{{cat.category_id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-white">Delete this category</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{% url 'delete_category' %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="cat_id" value="{{cat.category_id}}">
+                                            <p>Are you sure you want to delete {{cat.category_name}} category?</p>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">No</button>
+                                                <button type="submit" class="btn btn-sm btn-danger">Yes</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- edit modal -->
+                        <div class="modal fade" id="edit{{cat.category_id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-white">Edit this category</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{% url 'edit_category' %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="cat_id" value="{{cat.category_id}}">
+                                            <div class="form-group">
+                                                <label for="">New Category Name:</label>
+                                                <input type="text" class="form-control" value="{{cat.category_name}}" name="category_name" required>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6 ">
+            <form class="form shadow bg-light p-3 rounded" method="post" action="{% url 'add_programcategory' %}">
+                {% csrf_token %}
+                {% if messages %}
+                    <ul class="messages">
+                        
+                        {% for message in messages %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                <strong >{{ message }}</strong> 
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <h4>Add Category</h4>
+                <hr>
+                <div class="form-group">
+                    <label for="category_name">Category Name: </label>
+                    <input type="text" class="form-control" id="category_name" name="category_name" required>
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary">Add Program Category</button>
+            </form>
+        </div> 
+
+        
+    </div>
+    
+</div>
+{% endblock content %}

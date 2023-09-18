@@ -1,0 +1,145 @@
+{% extends 'panel/base.html' %}
+{% load static %}
+{% block title %}Admin Dashboard|Company{% endblock title %}
+
+
+{% block content %}
+<div class=" container inner-content">
+
+  <div class="btns mt-3 d-flex">
+    <h4 class="mr-3"> Clients List</h4>
+    <a href="{% url 'add_client' %}" class="btn  btn-sm btn-success">Register Client</a>
+  </div>
+  <hr>
+
+  {% if messages %}
+      <ul class="messages">
+          
+          {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong >{{ message }}</strong> 
+              </div>
+          {% endfor %}
+      </ul>
+    {% endif %}
+    
+  <!-- table for the clients -->
+  <div class="table-section mt-3">
+    <table class="table" id="table" border="1">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Profile Image</th>
+          <th>Company Name</th>
+          <th>Company Location</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Company Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for client in clients %}
+        <tr>
+          <td scope="row">{{client.company_id}}</td>
+          <td>
+            {% if client.profile_image %}
+                <img class="img-thumbnail" src="{{ client.profile_image.url }}" width="55" style="height: 55px;">
+            {% endif %}
+          </td>
+          <td> {{client.company_name}} </td>
+          <td> {{client.company_location}} </td>
+          <td> {{client.phone_number}} </td>
+          <td> {{client.email}} </td>
+          <td> {{client.company_type}} </td>
+          <td>
+            <a href="#edit{{client.company_id}}" data-toggle="modal" class="btn btn-sm"><i class="fas fa-edit    text-primary"></i></a>
+            <a href="#delete{{client.company_id}}" data-toggle="modal" class="btn btn-sm"><i class="fas fa-trash    text-danger"></i></a>
+          </td>
+        </tr>
+
+        <!-- edit modal -->
+        <div class="modal fade" id="edit{{client.company_id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Edit Client </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <form action="{% url 'edit_client' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="company_id" value="{{client.company_id}}">
+                    <div class="form-group">
+                      <label for="company_name">Company Name</label>
+                      <input type="text" class="form-control" value="{{client.company_name}}" id="company_name" name="company_name" required>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-6">
+                        <label for="company_location">Company Location</label>
+                        <input type="text" class="form-control" value="{{client.company_location}}"  id="company_location" name="company_location" required>
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="text" class="form-control" value="{{client.phone_number}}"  id="phone_number" name="phone_number" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" value="{{client.email}}"  id="email" name="email" required>
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="company_type">Company Type</label>
+                        <input type="text" class="form-control" id="company_type" value="{{client.company_type}}"  name="company_type" required>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-sm btn-danger">Save</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- delete modal -->
+        <div class="modal fade" id="delete{{client.company_id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title text-white">Delete this client</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                  </div>
+                  <div class="modal-body">
+                      <form action="{% url 'delete_client' %}" method="post">
+                          {% csrf_token %}
+                          <input type="hidden" name="company_id" value="{{client.company_id}}">
+                          <p>Are you sure you want to delete {{client.company_name}}?</p>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">No</button>
+                              <button type="submit" class="btn btn-sm btn-danger">Yes</button>
+                          </div>
+                      </form>
+                  </div>
+                 
+              </div>
+          </div>
+        </div>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <!-- table for the clients -->
+
+      
+</div>
+{% endblock content %}

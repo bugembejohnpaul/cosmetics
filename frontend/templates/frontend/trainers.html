@@ -1,0 +1,39 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% block title %}Homepage{% endblock title %}
+{% block main-content %}
+<!-- header -->
+<div class="pharma-header">
+  <div class=" container pharma-header-content" style="padding-top: 100px ;">
+      <h2 class="text-white">Our Trainers</h2>
+      <p class="mt-3"><a href="/">Home > </a> <span> Trainers</span></p>
+  </div>
+</div>
+<!-- header -->
+<div class="container">
+  <!-- <h2 class="text-center p-5">OUR TRAINERS</h2> -->
+  <link rel="stylesheet" href="/static/frontend/css/trainer.css" />
+  <div class="row mb-5">
+    {% for trainer in trainers %}
+      <div class="col-md-4">
+        <a href="{% url 'trainer_details' trainer.id %}" style="text-decoration:none; color:#000">
+          <div class="trainer-card shadow-sm bg-light">
+            <img class="trainer-image" src="/static/frontend/images/img2.jpg" style="height:100px; width:100px;">
+            {% comment %} <img src="{{ trainer.profile_image.url }}" alt="{{ trainer.name }}" class="trainer-image"> {% endcomment %}
+            <h4>{{ trainer.name }}</h4>
+            <span>Tel: {{ trainer.phone }}</span>
+            <p>Experience: {{ trainer.expertise }} years</p>
+            <div class="overflow-hidden" style="height:100px;">
+              <p>{{ trainer.description }}</p> 
+            </div>
+            <button class="btn btn-success">Contact Us</button>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  
+</div>
+
+{% endblock main-content %}

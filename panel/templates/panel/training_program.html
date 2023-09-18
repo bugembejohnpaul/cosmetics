@@ -1,0 +1,130 @@
+{% extends 'panel/base.html' %}
+{% load static %}
+{% block title %}Admin Dashboard|Programmes{% endblock title %}
+
+
+{% block content %}
+<div class=" container inner-content">
+  
+    <div class="btns mt-3 d-flex">
+      <h4 class="mr-3">Training Programs List</h4>
+      <a href="{% url 'add_training_program' %}" class="btn  btn-sm btn-success">Add Program</a>
+    </div>
+    <hr>
+
+    {% if messages %}
+      <ul class="messages">
+          
+          {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong >{{ message }}</strong> 
+              </div>
+          {% endfor %}
+      </ul>
+    {% endif %}
+    
+
+    <div class="table-section p-3">
+      <table class="table" id="table" >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Program Title</th>
+            <th>Category</th>
+            <th>Duration</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for program in programs %}
+            <tr>
+              <td> {{program.program_id}} </td>
+              <td> {{program.program_name}} </td>
+              <td> {{program.category.category_name}} </td>
+              <td> {{program.duration}} </td>
+              <td> {{program.description}} </td>
+              <td>
+                <a href="#edit{{program.program_id}}" data-toggle="modal" class="btn btn-sm text-primary"><i class="fas fa-edit    "></i></a>
+                <a href="#delete{{program.program_id}}" data-toggle="modal" class="btn btn-sm text-danger"><i class="fas fa-trash    "></i></a>
+              </td>
+            </tr>
+            <!-- edit modal -->
+            <div class="modal fade" id="edit{{program.program_id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edit Training Program</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="{% url 'edit_program' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="program_id" value="{{program.program_id}}">
+                        <div class="form-group">
+                          <label for="program_name">Program Name</label>
+                          <input type="text" class="form-control" value="{{program.program_name}}" id="program_name" name="program_name" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="category">Category</label>
+                          <select class="form-control" id="category" value="{{program.category}}" name="category" required>
+                            <option value="" disabled selected>Select a Category</option>
+                            {% for category in categories %}
+                              <option value="{{ category.pk }}">{{ category.category_name }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="duration">Duration (days)</label>
+                          <input type="number" class="form-control" value="{{program.duration}}" id="duration" name="duration" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="description">Description</label>
+                          <input type="text" class="form-control" id="description" value="{{program.description}}" name="description" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-sm btn-danger">Save</button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- delete modal -->
+            <div class="modal fade" id="delete{{program.program_id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title text-white">Delete this program</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                      </div>
+                      <div class="modal-body">
+                          <form action="{% url 'delete_program' %}" method="post">
+                              {% csrf_token %}
+                              <input type="hidden" name="program_id" value="{{program.program_id}}">
+                              <p>Are you sure you want to delete {{program.program_id}}?</p>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">No</button>
+                                  <button type="submit" class="btn btn-sm btn-danger">Yes</button>
+                              </div>
+                          </form>
+                      </div>
+                     
+                  </div>
+              </div>
+            </div>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+      
+</div>
+{% endblock content %}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>D&K Consultants | {% block title %}{% endblock title %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+    <!-- swiper css -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+</head>
+  <body>
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="card shadow mt-5">
+  
+  
+        <div class="card-body">
+          <div class="card-title text-center py-3">
+            <h4>Register Here</h4>
+          </div>
+          <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            {% include 'partials/messages.html' %}
+            <div class="form-group">
+              <input
+                type="text"
+                name="username"
+                placeholder="username"
+                id="usernameField"
+                value="{{fieldValues.username}}"
+                class="form-control form-control-sm"
+              />
+            </div>
+            <div class="invalid_feedback invalid-feedback" style="display:none">
+            </div>
+            <p class="text-sm text-success usernameSuccessOutput"></p>
+            <div class="form-group">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                class="form-control form-control-sm"
+                id="emailField"
+  
+                value="{{fieldValues.email}}"
+              />
+            </div>
+  
+            <div class="emailFeedBackArea invalid-feedback" style="display:none">
+            </div>
+            <p class="text-sm text-success emailSuccessOutput"></p>
+            <div class="form-group">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                class="form-control form-control-sm"
+                id="passwordField"
+              />
+              <small class="float-right py-2 showPasswordToggle" style='cursor:pointer;'>SHOW</small>
+            </div>
+            <input type="submit" value="Register" class="btn btn-block btn-primary submit-btn" />
+          </form>
+          Already Have An Account? <a href="/login">Login</a>
+        </div>
+  
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  
+  
+{% endblock %}
+<script src="{% static 'frontend/js/register.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+  </body>
+</html>

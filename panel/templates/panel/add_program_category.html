@@ -1,0 +1,57 @@
+{% extends 'panel/base.html' %}
+{% load static %}
+{% block title %}Admin Dashboard|Categories{% endblock title %}
+
+
+{% block content %}
+<div class="container inner-content">
+    <!-- links or buttons -->
+    <a href="/adminpanel/add_programcategory" class="btn btn-success btn-md">Add Trainer</a>
+    <a href="/adminpanel/view_programcategory" class="btn btn-success btn-md">View Trainers</a>
+    <!-- links or buttons -->
+    
+    {% if messages %}
+        <ul class="messages">
+            
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong >{{ message }}</strong> 
+                </div>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form class="form col-md-6" method="post" action="{% url 'add_programcategory' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="category_name">Category Name: </label>
+            <input type="text" class="form-control" id="category_name" name="category_name" required>
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary">Add Program Category</button>
+    </form> 
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Category Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cat in categories %}
+                <tr>
+                    <td>{{cat.id}}</td>
+                    <td>{{cat.category_name}}</td>
+                    <td>
+                        <a href="" class="btn btn-sm text-primary"><i class="fas fa-edit    "></i></a>
+                        <a href="" class="btn btn-sm text-danger"><i class="fas fa-trash    "></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
